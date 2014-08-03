@@ -1,0 +1,9 @@
+Version 1.2 contains several significant changes to Maui:
+- Input files are now read using Apache commons IO package (10xfaster)
+- Vocabularies are now stored as *.gz and with GZipInputStream (much less space is required)
+- Stopwords are initialized from a supplied file, rather than hard encoded one
+- A new class MauiWrapper that shows how to apply Maui to a single text file, or a text string. 
+- A new class MauiWrapperFactory that shows how to use MauiWrapper with several vocabularies at the same time
+- Important: The above new classes add the ability of creating a web service
+- data/models directory now contains some sample models for those, who don't have their own training data
+- data/vocabularies contains gziped vocabularies for some sample domains
