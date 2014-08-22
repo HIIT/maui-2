@@ -33,6 +33,9 @@ Run
 - For *wikipedia miner configuration file*, refer to [here](https://github.com/dnmilne/wikipediaminer/wiki/Installing-the-java-api#create-configuration-file)
 - A typical *trianing data path* would be `data/wikipedia_indexing/train/`
 
+An example:
+
+`> java -cp "lib/*:build/jar/maui-2.jar" maui.main.MauiModelBuilder -l data/wikipedia_indexing/train -m test -v wikipedia -c {path-to-wikipedia-miner-configuration-file}`
 
 ###Keyword extraction(Command line)
 
@@ -43,6 +46,9 @@ Given a list of text files for which you would the keywords to be extracted, an 
 - *test data path* is the directory containing text files each being a document with its keywords to be extracted. 
 - Note text files in *test data path* should have extension `.txt`
 
+An example:
+
+`> java -cp "lib/*:build/jar/maui-2.jar" maui.main.MauiTopicExtractor -l data/wikipedia_indexing/test -m test -v wikipedia -c {path-to-wikipedia-miner-configuration-file}`
 
 ###Keyword extraction(Java API)
 
