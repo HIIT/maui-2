@@ -101,7 +101,7 @@ public class MauiModelBuilder implements OptionHandler {
     public String inputDirectoryName = null;
 
     /** Name of model */
-    public String modelName = null;
+    public String modelPath = null;
 
     /** Vocabulary name */
     public String vocabularyName = "none";
@@ -330,11 +330,11 @@ public class MauiModelBuilder implements OptionHandler {
 	    throw new Exception("Name of directory required argument.");
 	}
 
-	String modelName = Utils.getOption('m', options);
-	if (modelName.length() > 0) {
-	    this.modelName = modelName;
+	String modelPath = Utils.getOption('m', options);
+	if (modelPath.length() > 0) {
+	    this.modelPath = modelPath;
 	} else {
-	    this.modelName = null;
+	    this.modelPath = null;
 	    throw new Exception("Name of model required argument.");
 	}
 
@@ -420,7 +420,7 @@ public class MauiModelBuilder implements OptionHandler {
 	options[current++] = "-l";
 	options[current++] = "" + (this.inputDirectoryName);
 	options[current++] = "-m";
-	options[current++] = "" + (this.modelName);
+	options[current++] = "" + (this.modelPath);
 	options[current++] = "-v";
 	options[current++] = "" + (this.vocabularyName);
 	options[current++] = "-f";
@@ -669,7 +669,7 @@ public class MauiModelBuilder implements OptionHandler {
     public void saveModel() throws Exception {
 
 	BufferedOutputStream bufferedOut = new BufferedOutputStream(
-								    new FileOutputStream("/data/tmp/maui/" + modelName));
+								    new FileOutputStream(modelPath));
 	ObjectOutputStream out = new ObjectOutputStream(bufferedOut);
 	out.writeObject(mauiFilter);
 	out.flush();

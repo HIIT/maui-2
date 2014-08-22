@@ -115,7 +115,7 @@ public class MauiWrapper {
 			throw new Exception("Text is too short!");
 		}
 
-		extractionModel.setWikipedia(null);
+		extractionModel.setWikipedia("");
 
 		FastVector atts = new FastVector(3);
 		atts.addElement(new Attribute("filename", (FastVector) null));

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maui-2" default="package" basedir="..">
+  <property file="ant/build.properties"/>
+
+  <path id="classpath">
+    <fileset dir="${lib.dir}" />
+  </path>
+
+  <!-- ================================= 
+       target: clean              
+       ================================= -->
+  <target name="clean" description="removes all generated files">
+    <echo>Cleaning ${build.dir}</echo>
+    <delete dir="${build.dir}" /> 
+  </target>
+
+  <!-- ================================= 
+       target: build              
+       ================================= -->
+  <target name="build" depends="clean" description="compiles source to 'bin' directory">
+    <echo>Creating the build directory</echo>
+    <mkdir dir="${build.dir}/classes"/>
+    <echo>Compiling the source code</echo>
+    <javac srcdir="${src.dir}" destdir="${build.dir}/classes" includeantruntime="false">
+      <classpath refid="classpath" />
+    </javac>
+  </target>
+
+  <!-- ================================= 
+       target: package              
+       ================================= -->
+  <target name="package" depends="build" description="creates jar and adds it to build directory">
+    <echo>Creating the jar file</echo>
+    <mkdir dir="${build.dir}/jar"/>
+    
+    <jar basedir="${build.dir}/classes" destfile="${build.dir}/jar/${jar.mainModule}" >
+      <fileset dir="${build.dir}">
+    	<include name="**/*.class"/>
+      </fileset>
+    </jar>
+  </target>
+
+  <!-- ================================= 
+       target: doc              
+       ================================= -->
+  <target name="doc" description="compiles documentation to ${doc.dir} directory">
+    <echo>Creating java documentation</echo>
+    <javadoc sourcepath="${src.dir}" destdir="${doc.dir}">
+    </javadoc>
+  </target>
+
+</project>

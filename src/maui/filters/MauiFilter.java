@@ -255,23 +255,23 @@ public class MauiFilter extends Filter {
     
     // private Wikipedia wikipedia = null;
 
-	public void setWikipedia(Wikipedia wikipedia) {
-		this.wikipedia = wikipedia;
+    public void setWikipedia(Wikipedia wikipedia) {
+	this.wikipedia = wikipedia;
 		
-		setRelatednessCache(this.wikipedia);
-	}
+	setRelatednessCache(this.wikipedia);
+    }
 
-	public void setWikipedia(String confPath) {
-	    try{
-		WikipediaConfiguration conf = new WikipediaConfiguration(new File(confPath));
+    public void setWikipedia(String confPath) {
+	try{
+	    WikipediaConfiguration conf = new WikipediaConfiguration(new File(confPath));
 		
-		this.wikipedia = new Wikipedia(conf, false);
+	    this.wikipedia = new Wikipedia(conf, false);
 
-		setRelatednessCache(this.wikipedia);
-	    }catch(Exception e){
-		e.printStackTrace();
-	    }
+	    setRelatednessCache(this.wikipedia);
+	}catch(Exception e){
+	    e.printStackTrace();
 	}
+    }
 	
     private void setRelatednessCache(Wikipedia wikipedia){
 	try{
@@ -1949,9 +1949,6 @@ public class MauiFilter extends Filter {
 			} else if (vocabularyName.equals("wikipedia")) {
 				// just use the title to denote manually chosen Wikipedia
 				// articles
-			    if(debugMode){
-				System.err.println("Keyphrase:" + keyphrase);
-			    }
 				int colonIndex = keyphrase.indexOf(":");
 				if (colonIndex != -1) {
 					keyphrase = keyphrase.substring(colonIndex + 2);										
